@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ProductInfo {
+  id                String   @id
+  category          String
+  namespaceId       String
+  name              String
+  capacityAvailable String[]
+  capacity          String
+  priceRegular      Int
+  priceDiscount     Int
+  colorsAvailable   String[]
+  color             String
+  images            String[]
+  description       Json[]
+  screen            String
+  resolution        String
+  processor         String
+  ram               String
+  camera            String
+  zoom              String
+  cell              String[]
+  product           Product?
+}
+
+model Product {
+  id        Int         @id @default(autoincrement())
+  category  String
+  itemId    String      @unique
+  name      String
+  fullPrice Int
+  price     Int
+  screen    String
+  capacity  String
+  color     String
+  ram       String
+  year      Int
+  image     String
+  quantity  Int
+  item      ProductInfo @relation(fields: [itemId], references: [id])
+}
+
+model User {
+  id             Int     @id @default(autoincrement())
+  firstName      String
+  lastName       String
+  email          String  @unique
+  password       String
+  activationToken String?
+  token          Token?
+}
+
+model Token {
+  id           Int    @id @default(autoincrement())
+  refreshToken String
+  userId       Int    @unique
+  user         User   @relation(fields: [userId], references: [id])
+}
