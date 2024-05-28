@@ -1,15 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import prisma from '../utils/db';
 import bcrypt from 'bcrypt';
-
 import { authService } from '../services/auth.service';
 import { userService } from '../services/user.service';
 import { jwtService } from '../services/jwt.service';
 import { ApiError } from '../exception/ApiError';
 import { tokenService } from '../services/token.service';
-// import type { User } from '@prisma/client';
-// import { PrismaClient } from '@prisma/client';
-// const prisma = new PrismaClient();
 
 function validateEmail(value: string) {
   if (!value) {
@@ -51,8 +47,6 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const activate = async (req: Request, res: Response) => {
-  console.log(prisma, 'prisma');
-
   const { activationToken } = req.params;
   const user = await prisma.user.findFirst({
     where: { activationToken },
@@ -77,13 +71,15 @@ const login = async (req: Request, res: Response) => {
   const user = await userService.findByEmail(email);
 
   if (!user) {
-    throw ApiError.BadRequest('User with this email does not exist');
+    res.send({ error: 'User with this email does not exist' });
+
+    return;
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
-    throw ApiError.BadRequest('Password is wrong');
+    res.send({ error: 'Password is wrong' });
   }
 
   await sendAuthentication(res, user);

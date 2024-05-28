@@ -22,8 +22,8 @@ function getAllActivated() {
   });
 }
 
-function normalize({ id, email }: User) {
-  return { id, email };
+function normalize({ id, email, firstName, lastName }: User) {
+  return { id, email, firstName, lastName };
 }
 
 function findByEmail(email: string) {
