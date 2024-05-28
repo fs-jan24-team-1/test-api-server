@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://fs-jan24-team-1.github.io/phone-catalog-fs24jan',
     credentials: true,
   }),
 );
