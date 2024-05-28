@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npm run prisma:generate && nodemon src/server.ts",
     "start": "npm run prisma:generate && ts-node src/server.ts",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",
