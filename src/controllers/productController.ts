@@ -66,7 +66,7 @@ export const productController = {
       const products = await productService.getHotPricesProducts();
       res.status(200).send(products);
     } catch (error) {
-      console.log(error);
+      res.send(error);
     }
   },
 };
