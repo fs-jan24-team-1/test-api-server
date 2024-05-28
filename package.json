@@ -1,10 +1,10 @@
 {
-  "name": "phone-catalog-api",
+  "name": "test-catalog-api",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "nodemon src/server.ts",
-    "start": "ts-node src/server.ts",
+    "dev": "npm run prisma:generate && nodemon src/server.ts",
+    "start": "npm run prisma:generate && ts-node src/server.ts",
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
@@ -36,13 +36,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fs-jan24-team-1/phone-catalog-api.git"
+    "url": "git+https://github.com/fs-jan24-team-1/test-catalog-api.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fs-jan24-team-1/phone-catalog-api.git/issues"
+    "url": "https://github.com/fs-jan24-team-1/test-catalog-api.git/issues"
   },
-  "homepage": "https://github.com/fs-jan24-team-1/phone-catalog-api.git#readme"
+  "homepage": "https://github.com/fs-jan24-team-1/test-catalog-api.git#readme"
 }
