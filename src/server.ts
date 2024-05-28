@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: 'https://fs-jan24-team-1.github.io',
+    origin: '*',
     credentials: true,
   }),
 );
