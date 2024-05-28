@@ -36,6 +36,9 @@
   },
   "repository": {
     "type": "git",
+    "engine": {
+      "node": ">=18.2.0"
+    },
     "url": "git+https://github.com/fs-jan24-team-1/test-catalog-api.git"
   },
   "keywords": [],
