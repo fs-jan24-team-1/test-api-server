@@ -4,8 +4,11 @@
   "description": "",
   "scripts": {
     "dev": "npm run prisma:generate && nodemon src/server.ts",
-    "start": "npm run prisma:generate && ts-node src/server.ts",
-    "prisma:generate": "npx prisma generate"
+    "start": "npm run build && npm run prisma:migrate && npm run start:prod",
+    "build": "npm run prisma:generate",
+    "start:prod": "ts-node src/server.ts",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",
